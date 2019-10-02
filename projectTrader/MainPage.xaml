@@ -62,11 +62,11 @@
         <TextBox HorizontalAlignment="Left" Margin="33,615,0,0" Text="" Name="txtMontant" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="905,608,0,0" Text="Prix Achat" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="69"/>
-        <TextBox HorizontalAlignment="Left" Margin="811,631,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="Black" Foreground="White"/>
+        <TextBox HorizontalAlignment="Left" Margin="811,631,0,0" Text="" Name="txtPrixVendre" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="Black" Foreground="White"/>
         <TextBlock HorizontalAlignment="Left" Margin="905,668,0,0" Text="Quantité" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="65"/>
-        <TextBox HorizontalAlignment="Left" Margin="810,691,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="Black" Foreground="White"/>
-        <Button Content="Vendre" Margin="1180,625,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250"/>
-        <Button Content="Vendre" Margin="810,745,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250"/>
+        <TextBox HorizontalAlignment="Left" Margin="810,691,0,0" Text="" Name="txtQuantiteVendre" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Background="Black" Foreground="White"/>
+        <Button Content="Vendre" Margin="1180,625,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250" Name="btnVendre" Click="BtnVendre_Click"/>
+        <Button Content="Vendre" Margin="810,745,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250" Name="btnVendreAchat" Click="BtnVendreAchat_Click"/>
 
 
 

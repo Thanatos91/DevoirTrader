@@ -262,5 +262,15 @@ namespace projectTrader
             }
             txtMontant.Text = montant.ToString();
         }
+
+        private void BtnVendreAchat_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnVendre_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
