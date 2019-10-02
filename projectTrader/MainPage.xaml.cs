@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ModelObjet;
+using Windows.UI.Popups;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -127,6 +128,7 @@ namespace projectTrader
                 }
             );
             #endregion
+            //On remplit la ListView des Actions
             lvAchat.ItemsSource = lesActionsReelles;
 
             //Pour le dico
@@ -263,13 +265,107 @@ namespace projectTrader
             txtMontant.Text = montant.ToString();
         }
 
-        private void BtnVendreAchat_Click(object sender, RoutedEventArgs e)
+        private async void BtnVendre_Click(object sender, RoutedEventArgs e)
         {
+            if (lvTraders.SelectedItem != null)
+            {
+                if (lvActions.SelectedItem == null){
+                    var message = new MessageDialog("Sélectionner une action :");
+                    await message.ShowAsync();
+                } else if (txtQuantiteVendue.Text == ""){
+                    var message = new MessageDialog("Saisir la quantité vendue :");
+                    await message.ShowAsync();
+                } else if (Convert.ToInt32(txtQuantiteAchetee.Text) < Convert.ToInt32(txtQuantiteVendue.Text)){
+                    var message = new MessageDialog("Vous ne pouvez pas vendre au-delà de ce que vous possédez :");
+                    await message.ShowAsync();
+                }
+                else
+                {
+                    // si quantité achetée = quantité vendue => on retire l'action de la liste
+                    if (Convert.ToInt32(txtQuantiteAchetee.Text) == Convert.ToInt32(txtQuantiteVendue.Text))
+                    {
+                        dico[lvTraders.SelectedItem.ToString()].Remove(lvActions.SelectedItem as ActionAchetee);
+                    }
+                    else if (Convert.ToInt32(txtQuantiteAchetee.Text) < Convert.ToInt32(txtQuantiteVendue.Text))
+                    {
+                        (lvActions.SelectedItem as ActionAchetee).Quantite = ((lvActions.SelectedItem as ActionAchetee).Quantite) - Convert.ToInt32(txtQuantiteVendue.Text);
+                    }
+                    // ainsi, actualisation de la liste 
+                    lvActions.ItemsSource = null;
+                    lvActions.ItemsSource = dico[lvTraders.SelectedItem.ToString()];
+                    // et du montant du portefeuille
+                    double montant = 0;
+                    foreach (ActionAchetee actionA in dico[lvTraders.SelectedItem.ToString()])
+                    {
+                        montant += actionA.Quantite * actionA.PrixAchat;
+                    }
+                    txtMontant.Text = montant.ToString();
 
+                    // remise à blanc du TextBox de Quantité Vendue 
+                    //txtQuantiteVendue.Text = "";
+                }
+            }
         }
 
-        private void BtnVendre_Click(object sender, RoutedEventArgs e)
+        private async void BtnAcheter_Click(object sender, RoutedEventArgs e)
         {
+            if (lvAchat.SelectedItem == null){
+                var message = new MessageDialog("Sélectionner une action !");
+                await message.ShowAsync();
+            } else if (txtPrixAcheter.Text == ""){
+                var message = new MessageDialog("Saisir le prix d'achat !");
+                await message.ShowAsync();
+            } else if (txtQuantiteAcheter.Text == ""){
+                var message = new MessageDialog("Saisir la quantité !");
+                await message.ShowAsync();
+            }
+            else
+            {
+                if (lvTraders.SelectedItem != null)
+                {
+                    if (lvAchat.SelectedItem != null)
+                    {
+                        ActionAchetee a = new ActionAchetee()
+                        {
+                            CodeAction = (lvAchat.SelectedItem as ActionReelle).CodeAction,
+                            NomAction = (lvAchat.SelectedItem as ActionReelle).NomAction,
+                            ValeurAction = (lvAchat.SelectedItem as ActionReelle).ValeurAction,
+                            PrixAchat = Convert.ToInt32(txtPrixAcheter.Text),
+                            Quantite = Convert.ToInt32(txtQuantiteAcheter.Text)
+                        };
+                        dico[lvTraders.SelectedItem.ToString()].Add(a);
+
+                        //actualisation de LvActions
+                        lvActions.ItemsSource = null;
+                        lvActions.ItemsSource = dico[lvTraders.SelectedItem.ToString()];
+
+                        //actualisation du montant du portefeuille
+                        double montant = 0;
+                        foreach (ActionAchetee actionA in dico[lvTraders.SelectedItem.ToString()])
+                        {
+                            montant += actionA.Quantite * actionA.PrixAchat;
+                        }
+                        txtMontant.Text = montant.ToString();
+                    }
+                }
+            }
+        }
+
+        private void LvActions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lvActions.SelectedItem != null && lvTraders.SelectedItem != null)
+            {
+                txtNomAction.Text = (lvActions.SelectedItem as ActionAchetee).NomAction.ToString();
+                txtValeurAction.Text = (lvActions.SelectedItem as ActionAchetee).ValeurAction.ToString();
+                txtPrixAchat.Text = (lvActions.SelectedItem as ActionAchetee).PrixAchat.ToString();
+                txtQuantiteAchetee.Text = (lvActions.SelectedItem as ActionAchetee).Quantite.ToString();
+            }
+            else{ //si on ne fait pas .Text, l'appli bug
+                txtNomAction.Text = "";
+                txtValeurAction.Text = "";
+                txtPrixAchat.Text = "";
+                txtQuantiteAchetee.Text = "";
+            } //les valeurs ne changent pas ...
 
         }
     }
