@@ -6,9 +6,44 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Loaded="Page_Loaded">
 
     <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,29,0,0" Text="Gestion PorteFeuille" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="50" FontWeight="Bold" FontFamily="Comic Sans MS"/>
+        <TextBlock HorizontalAlignment="Left" Margin="69,142,0,0" Text="Liste des traders" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="415,142,0,0" Text="Liste des actions" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="829,142,0,0" Text="Achat" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1266,142,0,0" Text="Vente" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <ListView Margin="27,203,1246,587" />
+        <ListView Margin="714,203,491,418" />
+        <ListView Margin="259,204,786,500" />
+        <TextBlock HorizontalAlignment="Left" Margin="1180,231,0,0" Text="Nom de l'action" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="1180,255,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1180,312,0,0" Text="Valeur de l'action" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="1180,336,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1180,398,0,0" Text="Prix achat" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="1180,420,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1180,476,0,0" Text="Quantité achetée" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="1180,500,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1180,548,0,0" Text="Quantité vendue" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="1180,572,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="362,769,0,0" Text="Montant Portefeuille" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="251"/>
+        <TextBox HorizontalAlignment="Left" Margin="362,793,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" IsEnabled="False"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="831,608,0,0" Text="Prix Achat" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="69"/>
+        <TextBox HorizontalAlignment="Left" Margin="750,631,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+        <TextBlock HorizontalAlignment="Left" Margin="835,668,0,0" Text="Quantité" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="65"/>
+        <TextBox HorizontalAlignment="Left" Margin="750,691,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="250"/>
+        <Button Content="Vendre" Margin="1180,625,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250"/>
+        <Button Content="Vendre" Margin="750,746,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.338,0.134" Width="250"/>
+
+
+
+
+
+
+
 
     </Grid>
 </Page>

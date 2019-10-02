@@ -154,6 +154,12 @@
       <Version>6.2.8</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelObjet\ModelObjet.csproj">
+      <Project>{e1fea8b4-94f0-46dd-b5ab-5d21c64620a1}</Project>
+      <Name>ModelObjet</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

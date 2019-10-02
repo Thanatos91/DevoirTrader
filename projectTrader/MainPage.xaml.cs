@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using ModelObjet;
 
 // Pour plus d'informations sur le modèle d'élément Page vierge, consultez la page https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -25,6 +26,11 @@ namespace projectTrader
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
